@@ -1,5 +1,5 @@
-from PySide2.QtWidgets import QMainWindow
-from PySide2.QtCore import SIGNAL, QObject
+from PySide2.QtWidgets import QMainWindow, QAction
+from PySide2.QtGui import QIcon, QKeySequence
 from ui_mainwindow import Ui_MainWindow
 
 
@@ -18,6 +18,12 @@ class MyMainWindow(QMainWindow):
 
         self.ui.graphicsView.click_mouse_position_signal.connect(self.handleClickMousePositionSignal)
         self.ui.graphicsView.move_mouse_position_signal.connect(self.handleMoveMousePositionSignal)
+
+        exit_action = QAction(QIcon(":/images/exit.png"), '&Quit', self)
+        exit_action.setShortcuts(QKeySequence.Quit)
+        exit_action.setStatusTip('Quit application')
+        exit_action.triggered.connect(self.close)
+        self.ui.menuFile.addAction(exit_action)
 
     def handleMonitorXButton(self):
         self.monitor_x_checked = self.ui.buttonMonitorX.isChecked()

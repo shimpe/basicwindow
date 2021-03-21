@@ -64,7 +64,6 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menuFile.menuAction())
-        self.menuFile.addAction(self.actionQuit)
 
         self.retranslateUi(MainWindow)
 
